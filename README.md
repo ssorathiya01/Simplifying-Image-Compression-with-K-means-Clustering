@@ -8,6 +8,7 @@ Image Compression with K-means:
 Imagine a colorful picture with thousands of different colors. By using K-means clustering, we can reduce the number of colors in an image and preserve all its visual properties. This process involves selecting representative subsets of colors (centroids) and then replacing each pixel with the nearest point in the image.
 
 Implementation Steps:
+
 #Preprocess the image
 original_img = plt.imread('bird_small.png')
 X_img = np.reshape(original_img, (original_img.shape[0] * original_img.shape[1], 3))
