@@ -30,7 +30,7 @@ idx = find_closest_centroids(X_img, centroids)
 
 X_recovered = centroids[idx, :]
 
-#Reconstruct the compressed image: Reshape the pixel assignments into the original image dimensions.
+#Reconstruct the compressed image
 
 X_recovered = np.reshape(X_recovered, original_img.shape)
 
