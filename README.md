@@ -11,14 +11,19 @@ Implementation Steps:
 #Preprocess the image
 original_img = plt.imread('bird_small.png')
 X_img = np.reshape(original_img, (original_img.shape[0] * original_img.shape[1], 3))
+
 #Select initial centroids
 initial_centroids = kMeans_init_centroids(X_img, K)
+
 #Run K-means algorithm
 centroids, idx = run_kMeans(X_img, initial_centroids, max_iters)
+
 #Assign pixels to centroids
 idx = find_closest_centroids(X_img, centroids)
+
 #Replace pixels with centroids
 X_recovered = centroids[idx, :]
+
 #Reconstruct the compressed image: Reshape the pixel assignments into the original image dimensions.
 X_recovered = np.reshape(X_recovered, original_img.shape)
 
