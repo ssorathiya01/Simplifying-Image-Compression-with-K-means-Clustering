@@ -26,7 +26,7 @@ def find_closest_centroids(X, centroids):
     
     return idx
 
-# Load data stored in arrays X, y from data folder (ex7data2.mat)
+#Load data stored in arrays X, y from data folder (ex7data2.mat)
 import os
 from os.path import dirname, join as pjoin
 import scipy.io as sio
@@ -36,16 +36,16 @@ X = data['X']
 print("First five elements of X are:\n", X[:5]) 
 print('The shape of X is:', X.shape)
 
-# Select an initial set of centroids (3 Centroids)
+#Select an initial set of centroids (3 Centroids)
 initial_centroids = np.array([[3,3], [6,2], [8,5]])
 
-# Find closest centroids using initial_centroids
+#Find closest centroids using initial_centroids
 idx = find_closest_centroids(X, initial_centroids)
 
-# Print closest centroids for the first three elements
+#Print closest centroids for the first three elements
 print("First three elements in idx are:", idx[:3])
 
-# UNIT TEST
+#UNIT TEST
 from public_tests import *
 
 find_closest_centroids_test(find_closest_centroids)
@@ -70,7 +70,7 @@ centroids = compute_centroids(X, idx, K)
 
 print("The centroids are:", centroids)
 
-# UNIT TEST
+#UNIT TEST
 compute_centroids_test(compute_centroids)
 Random initialization
 def kMeans_init_centroids(X, K):
@@ -82,14 +82,14 @@ def kMeans_init_centroids(X, K):
     
     return centroids
 
-# Set number of centroids and max number of iterations
+#Set number of centroids and max number of iterations
 K = 3
 max_iters = 10
 
-# Set initial centroids by picking random examples from the dataset
+#Set initial centroids by picking random examples from the dataset
 initial_centroids = kMeans_init_centroids(X, K)
 
-# Run K-Means
+#Run K-Means
 centroids, idx = run_kMeans(X, initial_centroids, max_iters, plot_progress=True)
 K-Means on image pixels
 def kMeans_init_centroids(X, K):
@@ -101,39 +101,39 @@ def kMeans_init_centroids(X, K):
     
     return centroids
 
-# Set number of centroids and max number of iterations
+#Set number of centroids and max number of iterations
 K = 3
 max_iters = 10
 
-# Set initial centroids by picking random examples from the dataset
+#Set initial centroids by picking random examples from the dataset
 initial_centroids = kMeans_init_centroids(X, K)
 
-# Run K-Means
+#Run K-Means
 centroids, idx = run_kMeans(X, initial_centroids, max_iters, plot_progress=True)
 
-# Preprocess the image
+#Preprocess the image
 original_img = plt.imread('bird_small.png')
 X_img = np.reshape(original_img, (original_img.shape[0] * original_img.shape[1], 3))
 
-# Select initial centroids
+#Select initial centroids
 initial_centroids = kMeans_init_centroids(X_img, K)
 
-# Run K-means algorithm
+#Run K-means algorithm
 centroids, idx = run_kMeans(X_img, initial_centroids, max_iters)
 
-# Plot the colors of the image and mark the centroids
+#Plot the colors of the image and mark the centroids
 plot_kMeans_RGB(X_img, centroids, idx, K)
 Compress the image
-# Assign pixels to centroids
+#Assign pixels to centroids
 idx = find_closest_centroids(X_img, centroids)
 
-# Replace pixels with centroids
+#Replace pixels with centroids
 X_recovered = centroids[idx, :]
 
-# Reconstruct the compressed image
+#Reconstruct the compressed image
 X_recovered = np.reshape(X_recovered, original_img.shape)
 
-# Display original image
+#Display original image
 fig, ax = plt.subplots(1,2, figsize=(16,16))
 plt.axis('off')
 
@@ -141,7 +141,7 @@ ax[0].imshow(original_img)
 ax[0].set_title('Original')
 ax[0].set_axis_off()
 
-# Display compressed image
+#Display compressed image
 ax[1].imshow(X_recovered)
 ax[1].set_title('Compressed with %d colours'%K)
 ax[1].set_axis_off()
